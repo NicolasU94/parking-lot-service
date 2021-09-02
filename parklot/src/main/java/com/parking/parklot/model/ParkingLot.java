@@ -40,6 +40,24 @@ private List<SpotPlace> busySpots;
         return busyPlaces;
     }
 
-    
+    public boolean isFull(){
+
+        boolean isFull = false;
+
+        if (freeSpots.size() == 0) isFull = true;
+
+        return isFull;
+
+    }
+
+    public boolean isEmpty(){
+
+        boolean isEmpty = false;
+
+        if (this.busySpots.size() == 0) isEmpty = true;
+
+        return isEmpty;
+    }
+
 
 }
