@@ -1,13 +1,18 @@
 package com.parking.parklot.model;
 
+import java.sql.Array;
+import java.util.ArrayList;
 import java.util.List;
+
 
 public class ParkingLot {
 
 private List<SpotPlace> freeSpots;
 private List<SpotPlace> busySpots;
 
-    public void create (List<SpotPlace> spots) {
+    public ParkingLot(List<SpotPlace> freeSpots) {
+        this.freeSpots = freeSpots;
+        this.busySpots = new ArrayList<SpotPlace>();
 
     }
 
@@ -20,11 +25,26 @@ private List<SpotPlace> busySpots;
     }
 
 
-    public int getRemainingSpots(){
+    public int getRemainingSpots(Spot spot){
 
-        int freeplaces = this.freeSpots.size();
+        int freeplaces = 0;
+        for (SpotPlace mySpot: this.freeSpots) {
+
+            if (mySpot.getSpot().equals(spot)) freeplaces++;
+        }
+
         return freeplaces;
+
     }
+
+
+    public int getTotalFreeSpots(){
+
+        return this.freeSpots.size();
+
+
+    }
+
 
     public int getTotalSpots(){
 
